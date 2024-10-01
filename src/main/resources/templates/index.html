@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <div layout:fragment="conteudo">
+        <div>
+            <h1>Bem-vindo ao sistema de cadastro de filmes</h1>
+        </div>
+
+        <div>
+            <a th:href="@{#}">Cadastrar Filme</a>
+            <a th:href="@{#}">Mostrar Filme</a>
+        </div>
+    </div>
+</body>
+</html>
