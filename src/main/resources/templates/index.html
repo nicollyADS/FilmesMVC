@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
 <body>
-    <div layout:fragment="conteudo">
-        <div>
-            <h1>Bem-vindo ao sistema de cadastro de filmes</h1>
-        </div>
+<div layout:fragment="conteudo">
+    <h1>Bem-vindo ao sistema de cadastro de filmes</h1>
 
-        <div>
-            <a th:href="@{#}">Cadastrar Filme</a>
-            <a th:href="@{#}">Mostrar Filme</a>
-        </div>
-    </div>
+    <a th:href="@{/filme/cadastrar}" class="btn btn-primary">Cadastrar Filme</a>
+    <a th:href="@{/filme/listar}" class="btn btn-secondary">Mostrar Filmes</a>
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

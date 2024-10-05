@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Filme</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
 </head>
 <body>
 
+<h1>Cadastro de Filme</h1>
+
+<div layout:fragment="conteudo">
+    <form th:action="@{/filme/cadastrar}" th:object="${filme}" method="post">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome do Filme</label>
+            <input type="text" class="form-control" id="nome" th:field="*{nome}">
+        </div>
+        <div class="mb-3">
+            <label for="genero" class="form-label">Gênero</label>
+            <input type="text" class="form-control" id="genero" th:field="*{genero}">
+        </div>
+        <div class="mb-3">
+            <label for="lancamento" class="form-label">Data de Lançamento</label>
+            <input type="date" class="form-control" id="lancamento" th:field="*{lancamento}">
+        </div>
+        <div class="mb-3">
+            <label for="sinopse" class="form-label">Sinopse</label>
+            <textarea class="form-control" id="sinopse" rows="3" th:field="*{sinopse}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</div>
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
