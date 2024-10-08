@@ -9,25 +9,26 @@
 </head>
 <body>
 
-<h1>Cadastro de Filme</h1>
-
 <div layout:fragment="conteudo">
+
+    <h1>Cadastro de Filme</h1>
+
     <form th:action="@{/filme/cadastrar}" th:object="${filme}" method="post">
         <div class="mb-3">
             <label for="nome" class="form-label">Nome do Filme</label>
-            <input type="text" class="form-control" id="nome" th:field="*{nome}">
+            <input type="text" class="form-control" id="nome" th:field="*{nome}" placeholder="Informe o nome do filme">
         </div>
         <div class="mb-3">
             <label for="genero" class="form-label">Gênero</label>
-            <input type="text" class="form-control" id="genero" th:field="*{genero}">
+            <input type="text" class="form-control" id="genero" th:field="*{genero}" placeholder="informe o gênero do filme. ex: Romance">
         </div>
         <div class="mb-3">
             <label for="lancamento" class="form-label">Data de Lançamento</label>
-            <input type="date" class="form-control" id="lancamento" th:field="*{lancamento}">
+            <input type="date" class="form-control" id="lancamento" th:field="*{lancamento}" placeholder="informe a data de lançamento">
         </div>
         <div class="mb-3">
             <label for="sinopse" class="form-label">Sinopse</label>
-            <textarea class="form-control" id="sinopse" rows="3" th:field="*{sinopse}"></textarea>
+            <textarea class="form-control" id="sinopse" rows="3" th:field="*{sinopse}" placeholder="informe a sinopse do filme"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
