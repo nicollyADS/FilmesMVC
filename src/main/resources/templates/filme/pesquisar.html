@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Pesquisa de Filmes</title>
@@ -9,7 +9,7 @@
 <div layout:fragment="conteudo" class="container mt-4">
     <h1>Pesquisa de Filmes</h1>
     <form th:action="@{/filme/pesquisar}" method="get" class="d-flex">
-        <input class="form-control me-2" type="search" name="query" placeholder="Buscar filmes..." aria-label="Search">
+        <input class="form-control me-2" type="search" name="query" placeholder="Buscar filmes" aria-label="Search">
         <button class="btn btn-success" type="submit">Pesquisar</button>
     </form>
 
