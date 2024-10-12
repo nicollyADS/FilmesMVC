@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Pesquisa de Filmes</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<div layout:fragment="conteudo" class="container mt-4">
+    <h1>Pesquisa de Filmes</h1>
+    <form th:action="@{/filme/pesquisar}" method="get" class="d-flex">
+        <input class="form-control me-2" type="search" name="query" placeholder="Buscar filmes..." aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+    </form>
+
+    <table class="table mt-4">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Gênero</th>
+            <th>Data de Lançamento</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="filme : ${filmes}">
+            <td th:text="${filme.nome}"></td>
+            <td th:text="${filme.genero}"></td>
+            <td th:text="${#temporals.format(filme.lancamento, 'dd/MM/yyyy')}"></td>
+            <td>
+                <a th:href="@{/filme/editar/}+${filme.id}"
+                   class="btn btn-outline-primary m-2">Editar</a>
+
+                <button th:onclick="|filmeId.value = ${filme.id}|" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Remover
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente excluir o filme?
+                </div>
+                <div class="modal-footer">
+                    <form th:action="@{/filme/remover}" method="post">
+                        <input type="hidden" name="id" id="filmeId"/>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                        <button type="submit" class="btn btn-danger">Sim</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

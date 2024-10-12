@@ -32,10 +32,12 @@
 
 
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2 bg-dark" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-secondary" type="submit">Buscar</button>
+
+            <form class="d-flex" th:action="@{/filme/pesquisar}" method="get">
+                <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+
         </div>
     </div>
 </nav>
