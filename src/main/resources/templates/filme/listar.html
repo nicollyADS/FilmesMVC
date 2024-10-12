@@ -30,12 +30,14 @@
             <td th:text="${#temporals.format(filme.lancamento, 'dd/MM/yyyy')}"></td>
             <td th:text="${filme.sinopse}"></td>
             <td>
+                <a th:href="@{/filme/detalhes/}+${filme.id}" class="btn btn-outline-success m-2">Ver Detalhes</a>
                 <a th:href="@{/filme/editar/}+${filme.id}"
                    class="btn btn-outline-primary m-2">Editar</a>
 
                 <button th:onclick="|filmeId.value = ${filme.id}|" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Remover
                 </button>
+
             </td>
         </tr>
     </table>

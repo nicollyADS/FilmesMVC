@@ -28,6 +28,7 @@
             <td th:text="${filme.genero}"></td>
             <td th:text="${#temporals.format(filme.lancamento, 'dd/MM/yyyy')}"></td>
             <td>
+                <a th:href="@{/filme/detalhes/}+${filme.id}" class="btn btn-outline-success m-2">Ver Detalhes</a>
                 <a th:href="@{/filme/editar/}+${filme.id}"
                    class="btn btn-outline-primary m-2">Editar</a>
 

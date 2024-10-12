@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("filme")
@@ -46,12 +47,23 @@ public class FilmeController {
     }
 
 
+    @GetMapping("detalhes/{id}")
+    public String detalhesFilme(@PathVariable Long id, Model model) {
+        Optional<Filme> optionalFilme = filmeRepository.findById(id);
+        if (optionalFilme.isPresent()) {
+            model.addAttribute("filme", optionalFilme.get());
+        } else {
+            model.addAttribute("erro", "Filme não encontrado");
+            return "error";
+        }
+        return "filme/detalhes";
+    }
 
     @GetMapping("pesquisar")
     public String pesquisarFilmes(@RequestParam String query, Model model) {
-        List<Filme> filmes = filmeRepository.findByNomeContainingIgnoreCase(query); // Implemente este método no seu serviço
+        List<Filme> filmes = filmeRepository.findByNomeContainingIgnoreCase(query);
         model.addAttribute("filmes", filmes);
-        return "filme/pesquisar"; // Nome do template
+        return "filme/pesquisar";
     }
 
 

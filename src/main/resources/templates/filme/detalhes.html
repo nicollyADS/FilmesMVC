@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Detalhes de ' + ${filme.nome}">Detalhes do Filme</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<div layout:fragment="conteudo" class="container mt-4">
+    <h1 th:text="${filme.nome}">Nome do Filme</h1>
+    <p><strong>Gênero:</strong> <span th:text="${filme.genero}"></span></p>
+    <p><strong>Data de Lançamento:</strong> <span th:text="${#temporals.format(filme.lancamento, 'dd/MM/yyyy')}"></span></p>
+    <p><strong>Sinopse:</strong> <span th:text="${filme.sinopse}"></span></p>
+    <a th:href="@{/filme/listar}" class="btn btn-secondary">Voltar para a lista de filmes</a>
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
